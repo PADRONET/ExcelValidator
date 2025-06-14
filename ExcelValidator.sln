@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36121.58 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelValidator", "ExcelValidator\ExcelValidator.csproj", "{45A32058-7701-4B76-A09A-A741163FA93B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TesteExcelValidator", "TesteExcelValidator\TesteExcelValidator.csproj", "{A5327E9B-D0FE-475E-A417-CB661DB06913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{45A32058-7701-4B76-A09A-A741163FA93B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45A32058-7701-4B76-A09A-A741163FA93B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45A32058-7701-4B76-A09A-A741163FA93B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5327E9B-D0FE-475E-A417-CB661DB06913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5327E9B-D0FE-475E-A417-CB661DB06913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5327E9B-D0FE-475E-A417-CB661DB06913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5327E9B-D0FE-475E-A417-CB661DB06913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -49,6 +49,7 @@ namespace ExcelValidator.Services
                 "Required" => !string.IsNullOrWhiteSpace(value),
                 "Regex" => Regex.IsMatch(value, rule.RuleValue ?? ""),
                 "MaxLength" => value.Length <= int.Parse(rule.RuleValue ?? "0"),
+                "GTIN" => value.IsValidEan(),
                 _ => true,
             };
         }
