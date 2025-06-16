@@ -18,9 +18,11 @@
     <Copyright>Copyright © 2025 PADRONET</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="ClosedXML" Version="0.105.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="" />
+	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="ClosedXML" Version="0.105.0" />
+    </ItemGroup>
 
 </Project>
