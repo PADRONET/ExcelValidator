@@ -2,30 +2,30 @@
 
 ## Objetivo
 
-O **ExcelValidator** È um serviÁo desenvolvido em .NET 9 que permite validar arquivos Excel (`.xlsx`) com base em um conjunto flexÌvel de regras. O serviÁo processa o arquivo Excel, aplica as regras de validaÁ„o definidas para cada coluna e retorna o arquivo modificado, destacando as cÈlulas inv·lidas com fundo rosa claro e coment·rios explicativos.
+O **ExcelValidator** √© um servi√ßo desenvolvido em .NET 9 que permite validar arquivos Excel (`.xlsx`) com base em um conjunto flex√≠vel de regras. O servi√ßo processa o arquivo Excel, aplica as regras de valida√ß√£o definidas para cada coluna e retorna o arquivo modificado, destacando as c√©lulas inv√°lidas com fundo rosa claro e coment√°rios explicativos.
 
 ## Como funciona
 
-- O serviÁo recebe um arquivo Excel codificado em Base64 e uma lista de regras de validaÁ„o.
-- Cada regra È associada a uma coluna especÌfica do Excel.
-- Para cada cÈlula, todas as regras definidas para a respectiva coluna s„o aplicadas.
-- Se uma cÈlula n„o atender a uma ou mais regras, ela È destacada e recebe um coment·rio com as mensagens de erro.
-- O arquivo Excel validado È retornado tambÈm em Base64.
+- O servi√ßo recebe um arquivo Excel codificado em Base64 e uma lista de regras de valida√ß√£o.
+- Cada regra √© associada a uma coluna espec√≠fica do Excel.
+- Para cada c√©lula, todas as regras definidas para a respectiva coluna s√£o aplicadas.
+- Se uma c√©lula n√£o atender a uma ou mais regras, ela √© destacada e recebe um coment√°rio com as mensagens de erro.
+- O arquivo Excel validado √© retornado tamb√©m em Base64.
 
 ## Exemplo de uso
 
-### Estrutura da requisiÁ„o
+### Estrutura da requisi√ß√£o
 
-A requisiÁ„o deve conter:
+A requisi√ß√£o deve conter:
 
 - `Base64Excel`: string com o arquivo Excel codificado em Base64.
-- `Rules`: lista de regras de validaÁ„o, onde cada regra possui:
-  - `ColumnName`: nome da coluna a ser validada (deve coincidir com o cabeÁalho do Excel).
+- `Rules`: lista de regras de valida√ß√£o, onde cada regra possui:
+  - `ColumnName`: nome da coluna a ser validada (deve coincidir com o cabe√ßalho do Excel).
   - `RuleType`: tipo da regra (ex: `Required`, `Regex`, `MaxLength`, `MinLength`, `Numeric`, etc).
-  - `RuleValue`: valor de referÍncia para a regra (quando aplic·vel).
+  - `RuleValue`: valor de refer√™ncia para a regra (quando aplic√°vel).
   - `ErrorMessage`: mensagem de erro personalizada.
 
-    #### Exemplo de definiÁ„o de regras
+    #### Exemplo de defini√ß√£o de regras
    
  ```csharp
 var request = new ValidationRequest
@@ -37,52 +37,52 @@ var request = new ValidationRequest
         {
             ColumnName = "Email",
             RuleType = "Required",
-            ErrorMessage = "O e-mail È obrigatÛrio."
+            ErrorMessage = "O e-mail √© obrigat√≥rio."
         },
         new ValidationRule
         {
             ColumnName = "Email",
             RuleType = "Regex",
             RuleValue = @"^[\w.-]+@[\w.-]+\.\w+$",
-            ErrorMessage = "Formato de e-mail inv·lido."
+            ErrorMessage = "Formato de e-mail inv√°lido."
         },
         new ValidationRule
         {
             ColumnName = "Idade",
             RuleType = "NumericGTZero",
-            ErrorMessage = "A idade deve ser um n˙mero maior que zero."
+            ErrorMessage = "A idade deve ser um n√∫mero maior que zero."
         },
         new ValidationRule
         {
             ColumnName = "Nome",
             RuleType = "MaxLength",
             RuleValue = "50",
-            ErrorMessage = "O nome deve ter no m·ximo 50 caracteres."
+            ErrorMessage = "O nome deve ter no m√°ximo 50 caracteres."
         }
     }
 };
 ```
-#### ObservaÁ„o:  
-> VocÍ pode definir m˙ltiplas regras para a mesma coluna, e todas ser„o aplicadas. Caso uma cÈlula viole mais de uma regra, todas as mensagens de erro ser„o exibidas no coment·rio da cÈlula.
+#### Observa√ß√£o:  
+> Voc√™ pode definir m√∫ltiplas regras para a mesma coluna, e todas ser√£o aplicadas. Caso uma c√©lula viole mais de uma regra, todas as mensagens de erro ser√£o exibidas no coment√°rio da c√©lula.
 
 ### Tipos de regras suportadas
 
-- `Required`: valor obrigatÛrio (n„o pode ser vazio).
-- `Regex`: validaÁ„o por express„o regular.
-- `MaxLength`: tamanho m·ximo do texto.
-- `MinLength`: tamanho mÌnimo do texto.
+- `Required`: valor obrigat√≥rio (n√£o pode ser vazio).
+- `Regex`: valida√ß√£o por express√£o regular.
+- `MaxLength`: tamanho m√°ximo do texto.
+- `MinLength`: tamanho m√≠nimo do texto.
 - `Length`: tamanho exato do texto.
-- `GTIN`: validaÁ„o de cÛdigo GTIN/EAN.
-- `Numeric`: valor numÈrico.
-- `NumericGTZero`: valor numÈrico maior que zero.
+- `GTIN`: valida√ß√£o de c√≥digo GTIN/EAN.
+- `Numeric`: valor num√©rico.
+- `NumericGTZero`: valor num√©rico maior que zero.
 
 ## Como executar
 
-1. Adicione a referÍncia ao pacote [ClosedXML](https://github.com/ClosedXML/ClosedXML).
-2. Importe e utilize o serviÁo `ExcelValidationService` em seu projeto.
-3. Envie a requisiÁ„o conforme o exemplo acima.
-4. O resultado ser· uma string Base64 do arquivo Excel validado, pronto para download ou exibiÁ„o.
+1. Adicione a refer√™ncia ao pacote [ClosedXML](https://github.com/ClosedXML/ClosedXML).
+2. Importe e utilize o servi√ßo `ExcelValidationService` em seu projeto.
+3. Envie a requisi√ß√£o conforme o exemplo acima.
+4. O resultado ser√° uma string Base64 do arquivo Excel validado, pronto para download ou exibi√ß√£o.
 
 ---
 
-Sinta-se ‡ vontade para adaptar as regras conforme a necessidade do seu domÌnio!
+Sinta-se √† vontade para adaptar as regras conforme a necessidade do seu dom√≠nio!
