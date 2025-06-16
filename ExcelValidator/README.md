@@ -27,7 +27,7 @@ A requisição deve conter:
 
     #### Exemplo de definição de regras
    
- 
+ ```csharp
 var request = new ValidationRequest
 {
     Base64Excel = "<arquivo_excel_em_base64>",
@@ -61,7 +61,7 @@ var request = new ValidationRequest
         }
     }
 };
-
+```
 #### Observação:  
 > Você pode definir múltiplas regras para a mesma coluna, e todas serão aplicadas. Caso uma célula viole mais de uma regra, todas as mensagens de erro serão exibidas no comentário da célula.
 
