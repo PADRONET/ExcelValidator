@@ -12,11 +12,12 @@
     <Company>PADRONET</Company>
     <Description>Serviço para validação de arquivos Excel com regras customizáveis, destacando células inválidas e adicionando comentários explicativos.</Description>
     <PackageTags>excel;validação;closedxml;dotnet;planilha</PackageTags>
-    <RepositoryUrl>https://github.com/seuusuario/ExcelValidator</RepositoryUrl>
+    <RepositoryUrl>https://github.com/PADRONET</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/seuusuario/ExcelValidator</PackageProjectUrl>
-    <Copyright>Copyright © 2025 PADRONET</Copyright>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/PADRONET/ExcelValidator</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <Copyright>Copyright © 2025 PADRONET</Copyright>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 	<ItemGroup>
 		<None Include="README.md" Pack="true" PackagePath="" />
