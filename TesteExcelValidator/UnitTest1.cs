@@ -7,7 +7,7 @@ namespace TesteExcelValidator
 {
     public class UnitTest1
     {
-        private readonly IExcelValidationService _excelValidationService;
+        private readonly ExcelValidationInterface _excelValidationService;
         
         public UnitTest1()
         {

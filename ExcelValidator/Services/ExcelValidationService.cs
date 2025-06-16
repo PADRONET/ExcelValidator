@@ -12,7 +12,7 @@ namespace ExcelValidator.Services
     /// <remarks>
     /// Este serviço processa um arquivo Excel fornecido como uma string codificada em Base64, valida seu conteúdo com base nas regras especificadas e destaca as células inválidas no arquivo Excel resultante. Células inválidas são marcadas com fundo rosa claro e um comentário contendo a mensagem de erro. O arquivo Excel modificado é retornado como uma string codificada em Base64.
     /// </remarks>
-    public class ExcelValidationService: IExcelValidationService
+    public class ExcelValidationService: ExcelValidationInterface
     {
         /// <summary>
         /// Valida o conteúdo de um arquivo Excel com base nas regras de validação especificadas e retorna o arquivo modificado como uma string codificada em Base64.

@@ -2,7 +2,7 @@
 
 namespace ExcelValidator.Interfaces
 {
-    public interface IExcelValidationService
+    public interface ExcelValidationInterface
     {
         /// <summary>
         /// Valida o conteúdo de um arquivo Excel com base nas regras de validação especificadas e retorna o arquivo modificado como uma string codificada em Base64.
