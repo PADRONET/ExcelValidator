@@ -23,9 +23,9 @@ namespace TesteExcelValidator
             worksheet.Cell(1, 5).Value = "VALOR2";
             worksheet.Cell(2, 5).Value = ""; // Valor invalido para "Numeric"
             worksheet.Cell(1, 6).Value = "NCM";
-            worksheet.Cell(2, 6).Value = "99999999"; // Valor invalido para "Numeric"
+            worksheet.Cell(2, 6).Value = "99999999"; // Valor valido para "Length"
             worksheet.Cell(1, 7).Value = "CEST";
-            worksheet.Cell(2, 7).Value = "99999"; // Valor invalido para "Numeric"
+            worksheet.Cell(2, 7).Value = "99999"; // Valor invalido para "MaxLength"
 
             using var ms = new MemoryStream();
             workbook.SaveAs(ms);
