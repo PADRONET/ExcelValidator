@@ -31,23 +31,31 @@ namespace ExcelValidator.Services
             var headerRow = worksheet.Row(1);
             var headers = headerRow.Cells().Select(c => c.Value.ToString()).ToList();
 
-            var ruleMap = request.Rules.ToDictionary(r => r.ColumnName, r => r);
+            var ruleMap = request.Rules
+                .GroupBy(r => r.ColumnName)
+                .ToDictionary(g => g.Key, g => g.ToList());
 
             foreach (var row in worksheet.RowsUsed().Skip(1))
             {
                 for (int colIndex = 1; colIndex <= headers.Count; colIndex++)
                 {
                     var columnName = headers.ElementAtOrDefault(colIndex - 1);
-                    if (columnName == null || !ruleMap.TryGetValue(columnName, out var rule))
+                    if (columnName == null || !ruleMap.TryGetValue(columnName, out var rules))
                         continue;
 
                     var cell = row.Cell(colIndex);
                     var value = cell.Value.ToString() ?? "";
 
-                    if (!IsValid(value, rule))
+                    // Verifica todas as regras e coleta mensagens de erro
+                    var errorMessages = rules
+                        .Where(rule => !IsValid(value, rule))
+                        .Select(rule => rule.ErrorMessage ?? "Dado inválido")
+                        .ToList();
+
+                    if (errorMessages.Any())
                     {
                         cell.Style.Fill.BackgroundColor = XLColor.LightPink;
-                        cell.CreateComment().AddText(rule.ErrorMessage ?? "Dado inválido");
+                        cell.CreateComment().AddText(string.Join("; ", errorMessages));
                     }
                 }
             }
