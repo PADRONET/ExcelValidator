@@ -2,7 +2,6 @@
 using ExcelValidator.Services;
 using ExcelValidator.Interfaces;
 using ClosedXML.Excel;
-using System.Threading.Tasks;
 
 namespace TesteExcelValidator
 {
@@ -47,8 +46,9 @@ namespace TesteExcelValidator
                 new ValidationRule("CODIGO_EAN", "GTIN", null, "Codigo EAN Invalido"),
                 new ValidationRule("VALOR", "Numeric", null, "Não é um numero"),
                 new ValidationRule("VALOR2", "Numeric", null, "Não é um numero"),
+                new ValidationRule("VALOR2", "NumericGTZero", null, "Não é um numero"),
                 new ValidationRule("NCM", "Length", "8", "Formato invalido"),
-                new ValidationRule("CEST", "MaxLength", "4", "Formato invalido")
+                new ValidationRule("CEST", "MaxLength", "4", "Passou da Conta")
             };
 
             var request = new ValidationRequest("teste.xlsx", base64Excel, regras);
@@ -96,7 +96,7 @@ namespace TesteExcelValidator
 
             // A célula nao deve estar com fundo rosa claro (LightPink)
             Assert.Equal(ClosedXML.Excel.XLColor.LightPink, cell7.Style.Fill.BackgroundColor);
-            Assert.Contains("Formato invalido", cell7.GetComment()?.Text ?? "");
+            Assert.Contains("Passou da Conta", cell7.GetComment()?.Text ?? "");
         }
     }
 }
