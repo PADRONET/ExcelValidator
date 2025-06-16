@@ -4,6 +4,19 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+
+    <!-- Metadados para NuGet -->
+    <PackageId>ExcelValidator</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Alexandre De Marco Padrão</Authors>
+    <Company>PADRONET</Company>
+    <Description>Serviço para validação de arquivos Excel com regras customizáveis, destacando células inválidas e adicionando comentários explicativos.</Description>
+    <PackageTags>excel;validação;closedxml;dotnet;planilha</PackageTags>
+    <RepositoryUrl>https://github.com/seuusuario/ExcelValidator</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/seuusuario/ExcelValidator</PackageProjectUrl>
+    <Copyright>Copyright © 2025 PADRONET</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
