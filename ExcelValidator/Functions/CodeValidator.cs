@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace ExcelValidator.Services
+namespace ExcelValidator.Functions
 {
     public static class AsinValidator
     {

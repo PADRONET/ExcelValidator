@@ -1,13 +1,22 @@
 ﻿using ExcelValidator.Models;
 using ExcelValidator.Services;
+using ExcelValidator.Interfaces;
 using ClosedXML.Excel;
+using System.Threading.Tasks;
 
 namespace TesteExcelValidator
 {
     public class UnitTest1
     {
-       [Fact]
-        public void ValidateExcel_DeveDestacarCelulaInvalida()
+        private readonly IExcelValidationService _excelValidationService;
+        
+        public UnitTest1()
+        {
+            _excelValidationService = new ExcelValidationService();
+        }
+
+        [Fact]
+        public async Task ValidateExcel_DeveDestacarCelulaInvalida()
         {
             // Arrange: cria um arquivo Excel em memória
             using var workbook = new XLWorkbook();
@@ -46,7 +55,7 @@ namespace TesteExcelValidator
             var service = new ExcelValidationService();
 
             // Act
-            var resultadoBase64 = service.ValidateExcel(request);
+            var resultadoBase64 = await _excelValidationService.ValidateExcel(request);
 
             // Assert: verifica se o resultado contém alguma alteração (cor de fundo ou comentário)
             var resultadoBytes = Convert.FromBase64String(resultadoBase64);

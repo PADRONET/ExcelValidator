@@ -1,4 +1,6 @@
 using ClosedXML.Excel;
+using ExcelValidator.Functions;
+using ExcelValidator.Interfaces;
 using ExcelValidator.Models;
 using System.Text.RegularExpressions;
 
@@ -10,7 +12,7 @@ namespace ExcelValidator.Services
     /// <remarks>
     /// Este serviço processa um arquivo Excel fornecido como uma string codificada em Base64, valida seu conteúdo com base nas regras especificadas e destaca as células inválidas no arquivo Excel resultante. Células inválidas são marcadas com fundo rosa claro e um comentário contendo a mensagem de erro. O arquivo Excel modificado é retornado como uma string codificada em Base64.
     /// </remarks>
-    public class ExcelValidationService
+    public class ExcelValidationService: IExcelValidationService
     {
         /// <summary>
         /// Valida o conteúdo de um arquivo Excel com base nas regras de validação especificadas e retorna o arquivo modificado como uma string codificada em Base64.
@@ -22,7 +24,7 @@ namespace ExcelValidator.Services
         /// <returns>
         /// Uma string codificada em Base64 representando o arquivo Excel modificado. Células com dados inválidos são destacadas e comentários são adicionados para indicar os erros de validação.
         /// </returns>
-        public string ValidateExcel(ValidationRequest request)
+        public async Task<string> ValidateExcel(ValidationRequest request)
         {
             using var stream = new MemoryStream(Convert.FromBase64String(request.Base64Excel));
             using var workbook = new XLWorkbook(stream);
@@ -62,6 +64,7 @@ namespace ExcelValidator.Services
 
             using var output = new MemoryStream();
             workbook.SaveAs(output);
+            await Task.CompletedTask; // Simula operação assíncrona
             return Convert.ToBase64String(output.ToArray());
         }
 
@@ -76,7 +79,7 @@ namespace ExcelValidator.Services
         /// <returns>
         /// <see langword="true"/> se o <paramref name="value"/> satisfaz a <paramref name="rule"/> especificada; caso contrário, <see langword="false"/>.
         /// </returns>
-        private bool IsValid(string value, ValidationRule rule)
+        internal bool IsValid(string value, ValidationRule rule)
         {
             return rule.RuleType switch
             {
